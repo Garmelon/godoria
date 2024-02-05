@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cl80lss8ol1g8"]
+
+[ext_resource type="Script" path="res://Main/Main.gd" id="1_4ppmd"]
+[ext_resource type="PackedScene" uid="uid://dmuubcbriw7uu" path="res://EuphRoom/EuphRoom.tscn" id="2_wfewt"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_4ppmd")
+
+[node name="EuphRoom" parent="." instance=ExtResource("2_wfewt")]
+autoconnect = true
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="packet" from="EuphRoom" to="." method="_on_euph_room_packet"]
