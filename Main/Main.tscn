@@ -9,8 +9,51 @@ script = ExtResource("1_4ppmd")
 [node name="EuphRoom" parent="." instance=ExtResource("2_wfewt")]
 autoconnect = true
 
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="Ui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Ui"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Status" type="Label" parent="Ui/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "unknown"
+
+[node name="HSeparator" type="HSeparator" parent="Ui/VBoxContainer"]
+layout_mode = 2
+
+[node name="Messages" type="RichTextLabel" parent="Ui/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "Messages:"
+
+[node name="HSeparator2" type="HSeparator" parent="Ui/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Ui/VBoxContainer"]
+layout_mode = 2
+
+[node name="Input" type="LineEdit" parent="Ui/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SendButton" type="Button" parent="Ui/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Send"
 
 [connection signal="packet" from="EuphRoom" to="." method="_on_euph_room_packet"]
+[connection signal="text_submitted" from="Ui/VBoxContainer/HBoxContainer/Input" to="." method="_on_input_text_submitted"]
+[connection signal="pressed" from="Ui/VBoxContainer/HBoxContainer/SendButton" to="." method="_on_send_button_pressed"]
