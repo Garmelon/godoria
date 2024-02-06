@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="euphoria.gd"
+config/name="godoria"
 run/main_scene="res://Main/Main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
